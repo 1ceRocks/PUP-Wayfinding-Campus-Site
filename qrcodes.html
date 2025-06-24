@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>PUP Campus QR Codes</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 2rem; background: #f8f8f8; }
-    h1 { text-align: center; color: crimson; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f8f8f8;
+    }
+    h1 {
+      text-align: center;
+      color: crimson;
+    }
     .qr-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -18,15 +25,21 @@
       padding: 1rem;
       border-radius: 12px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    .qr-item img { margin-bottom: 0.5rem; }
-    .qr-item p { font-size: 0.9rem; font-weight: 500; }
+    .qr-item p {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
   </style>
 </head>
 <body>
   <h1>PUP Campus QR Codes</h1>
   <div class="qr-grid" id="qr-grid"></div>
+
+  <!-- ✅ Load official QRCode.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <script>
     const buildings = [
@@ -45,17 +58,19 @@
       const qrDiv = document.createElement("div");
       qrDiv.className = "qr-item";
 
-      const img = document.createElement("img");
-      img.width = 200;
-      img.height = 200;
+      // Add QR Code
+      const qrCanvas = document.createElement("div");
+      new QRCode(qrCanvas, {
+        text: `${BASE_URL}${b.id}`,
+        width: 200,
+        height: 200
+      });
 
-      // Use Google's Chart API
-      img.src = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(BASE_URL + b.id)}`;
-
+      // Add label
       const label = document.createElement("p");
       label.textContent = `${b.name} (${b.id})`;
 
-      qrDiv.appendChild(img);
+      qrDiv.appendChild(qrCanvas);
       qrDiv.appendChild(label);
       qrGrid.appendChild(qrDiv);
     });
