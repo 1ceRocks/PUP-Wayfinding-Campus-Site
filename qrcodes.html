@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>QR Codes – Campus Wayfinding</title>
+  <title>PUP Campus QR Codes</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       padding: 2rem;
       background: #f8f8f8;
     }
@@ -40,39 +40,42 @@
   <h1>PUP Campus QR Codes</h1>
   <div class="qr-grid" id="qr-grid"></div>
 
+  <!-- Load QRCode.js first -->
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <script>
-    const buildings = [
-      { id: "MAB", name: "Main Academic Building" },
-      { id: "NALLRC", name: "Ninoy Aquino Library and Learning Resources Center" },
-      { id: "CDR", name: "Charlie del Rosario Building" },
-      { id: "LAGOON", name: "PUP Lagoon" },
-      { id: "CEA", name: "College of Engineering and Architecture" },
-      { id: "HASMIN", name: "Hasmin Building" }
-    ];
+    window.onload = function() {
+      const buildings = [
+        { id: "MAB", name: "Main Academic Building" },
+        { id: "NALLRC", name: "Ninoy Aquino Library and Learning Resources Center" },
+        { id: "CDR", name: "Charlie del Rosario Building" },
+        { id: "LAGOON", name: "PUP Lagoon" },
+        { id: "CEA", name: "College of Engineering and Architecture" },
+        { id: "HASMIN", name: "Hasmin Building" }
+      ];
 
-    const BASE_URL = "https://pup-wayfinding-campus-site.vercel.app/?id=";
+      const BASE_URL = "https://pup-wayfinding-campus-site.vercel.app/?id=";
+      const qrGrid = document.getElementById("qr-grid");
 
-    const qrGrid = document.getElementById("qr-grid");
+      buildings.forEach(b => {
+        const qrDiv = document.createElement("div");
+        qrDiv.className = "qr-item";
 
-    buildings.forEach(b => {
-      const qrDiv = document.createElement("div");
-      qrDiv.className = "qr-item";
+        const canvas = document.createElement("canvas");
 
-      const canvas = document.createElement("canvas");
-      QRCode.toCanvas(canvas, `${BASE_URL}${b.id}`, { width: 200 }, err => {
-        if (err) {
-          console.error(`Error generating QR for ${b.name}:`, err);
-        }
+        QRCode.toCanvas(canvas, `${BASE_URL}${b.id}`, { width: 200 }, (err) => {
+          if (err) {
+            console.error(`Error generating QR for ${b.name}:`, err);
+          }
+        });
+
+        const label = document.createElement("p");
+        label.textContent = `${b.name} (${b.id})`;
+
+        qrDiv.appendChild(canvas);
+        qrDiv.appendChild(label);
+        qrGrid.appendChild(qrDiv);
       });
-
-      const label = document.createElement("p");
-      label.textContent = `${b.name} (${b.id})`;
-
-      qrDiv.appendChild(canvas);
-      qrDiv.appendChild(label);
-      qrGrid.appendChild(qrDiv);
-    });
+    };
   </script>
 </body>
 </html>
