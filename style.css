@@ -30,6 +30,14 @@ padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
 }
+#bldg-history,
+#bldg-desc {
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
 #loader {
   position: fixed;
   top: 0;
