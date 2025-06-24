@@ -21,7 +21,7 @@
       margin-top: 2rem;
     }
     .qr-item {
-      background: white;
+      background: #fff;
       padding: 1rem;
       border-radius: 12px;
       text-align: center;
@@ -29,6 +29,10 @@
     }
     .qr-item canvas {
       margin-bottom: 0.5rem;
+    }
+    .qr-item p {
+      font-size: 0.9rem;
+      font-weight: 500;
     }
   </style>
 </head>
@@ -47,7 +51,7 @@
       { id: "HASMIN", name: "Hasmin Building" }
     ];
 
-    const BASE_URL = "https://pup-wayfinding-campus-site.vercel.app/";
+    const BASE_URL = "https://pup-wayfinding-campus-site.vercel.app/?id=";
 
     const qrGrid = document.getElementById("qr-grid");
 
@@ -57,7 +61,9 @@
 
       const canvas = document.createElement("canvas");
       QRCode.toCanvas(canvas, `${BASE_URL}${b.id}`, { width: 200 }, err => {
-        if (err) console.error(err);
+        if (err) {
+          console.error(`Error generating QR for ${b.name}:`, err);
+        }
       });
 
       const label = document.createElement("p");
