@@ -3,43 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PUP Campus Wayfinding</title>
-  <link rel="stylesheet" href="style.css" />
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-o9N1j8MkKvfU4TDIcU8fNxxr3LkR5rM/PRv3lC+otLM="
-    crossorigin=""
-
-    <link rel="icon" href="favicon.ico" />
-    <meta name="description" content="Wayfinding map for PUP campus buildings using QR and historical info." />
-    <meta name="theme-color" content="#dc143c" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  />
+  <title>PUP Campus Building Info</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: crimson;
+      text-align: center;
+    }
+    .info {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>PUP Campus Wayfinding</h1>
-    <p>Scan a QR to view building info and location</p>
-  </header>
+  <h1 id="bldg-name">Loading...</h1>
+  <div class="info">
+    <p><strong>ID:</strong> <span id="bldg-id"></span></p>
+    <p><strong>Year Built:</strong> <span id="bldg-year"></span></p>
+    <p><strong>Description:</strong> <span id="bldg-desc"></span></p>
+    <p><strong>History:</strong> <span id="bldg-history"></span></p>
+  </div>
 
-  <div id="loader">Loading map...</div>
+  <iframe id="map" allowfullscreen></iframe>
 
-  <main>
-    <div id="map"></div>
-    <div id="info">
-      <h2 id="building-name">Scan a QR code</h2>
-      <p id="building-description">Building description will appear here.</p>
-      <ul>
-        <li><strong>ID:</strong> <span id="building-id">-</span></li>
-        <li><strong>Year Built:</strong> <span id="building-year">-</span></li>
-        <li><strong>History:</strong> <span id="building-history">-</span></li>
-      </ul>
-    </div>
-  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const buildingId = params.get("id");
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-oEnhljA0Ei0KJDOA93QG7U1TfF5b0z3aZzstLJ5wP/Y=" crossorigin=""></script>
-  <script src="data.js"></script>
-  <script src="script.js"></script>
+    if (buildingId) {
+      fetch("buildings.json")
+        .then(res => res.json())
+        .then(data => {
+          const b = data.find(b => b.id === buildingId);
+          if (!b) return;
+
+          document.getElementById("bldg-name").textContent = b.name;
+          document.getElementById("bldg-id").textContent = b.id;
+          document.getElementById("bldg-year").textContent = b.year;
+          document.getElementById("bldg-desc").textContent = b.description;
+          document.getElementById("bldg-history").textContent = b.history;
+
+          const map = document.getElementById("map");
+          map.src = `https://maps.google.com/maps?q=${b.lat},${b.lng}&z=17&output=embed`;
+        });
+    } else {
+      document.getElementById("bldg-name").textContent = "No building ID provided.";
+    }
+  </script>
 </body>
 </html>

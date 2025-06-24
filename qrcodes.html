@@ -5,15 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>PUP Campus QR Codes</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background: #f8f8f8;
-    }
-    h1 {
-      text-align: center;
-      color: crimson;
-    }
+    body { font-family: Arial, sans-serif; padding: 2rem; background: #f8f8f8; }
+    h1 { text-align: center; color: crimson; }
     .qr-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -25,22 +18,18 @@
       padding: 1rem;
       border-radius: 12px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
     }
-    .qr-item p {
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-top: 0.5rem;
-    }
+    .qr-item canvas { margin-bottom: 0.5rem; }
+    .qr-item p { font-size: 0.9rem; font-weight: 500; }
   </style>
 </head>
 <body>
   <h1>PUP Campus QR Codes</h1>
   <div class="qr-grid" id="qr-grid"></div>
 
-  <!-- ✅ Load official QRCode.js library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
+  <!-- QRCode Generator CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
   <script>
     const buildings = [
       { id: "MAB", name: "Main Academic Building" },
@@ -51,26 +40,28 @@
       { id: "HASMIN", name: "Hasmin Building" }
     ];
 
-    const BASE_URL = "https://pup-wayfinding-campus-site.vercel.app/?id=";
+    // ✅ Replace with your actual deployment base URL:
+    const BASE_URL = "https://pup-wayfinding-campus-site.vercel.app/index.html?id=";
+
     const qrGrid = document.getElementById("qr-grid");
 
     buildings.forEach(b => {
       const qrDiv = document.createElement("div");
       qrDiv.className = "qr-item";
 
-      // Add QR Code
-      const qrCanvas = document.createElement("div");
-      new QRCode(qrCanvas, {
-        text: `${BASE_URL}${b.id}`,
-        width: 200,
-        height: 200
+      const canvas = document.createElement("canvas");
+
+      QRCode.toCanvas(canvas, `${BASE_URL}${b.id}`, { width: 200 }, (err) => {
+        if (err) {
+          console.error(`Error generating QR for ${b.name}:`, err);
+          return;
+        }
       });
 
-      // Add label
       const label = document.createElement("p");
       label.textContent = `${b.name} (${b.id})`;
 
-      qrDiv.appendChild(qrCanvas);
+      qrDiv.appendChild(canvas);
       qrDiv.appendChild(label);
       qrGrid.appendChild(qrDiv);
     });
