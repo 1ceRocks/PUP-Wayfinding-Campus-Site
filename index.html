@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <title>PUP Campus Building Info</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background: #f8f8f8;
       padding: 2rem;
       max-width: 800px;
       margin: auto;
     }
     h1 {
+      font-family: 'Bebas Neue', cursive;
       color: crimson;
       text-align: center;
+      font-size: 3rem;
+      letter-spacing: 1px;
     }
     .info {
       background: #fff;
@@ -30,6 +34,14 @@
       border: none;
       border-radius: 10px;
     }
+    #bldg-image {
+      margin-top: 1rem;
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -42,41 +54,37 @@
   </div>
 
   <iframe id="map" allowfullscreen></iframe>
+  <img id="bldg-image" alt="Building Image" />
 
-  <!-- 🔽 This goes just below the map -->
-  <img id="bldg-image" alt="Building Image" style="margin-top: 1rem; width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;" />
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const buildingId = params.get("id");
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const buildingId = params.get("id");
+    if (buildingId) {
+      fetch("buildings.json")
+        .then(res => res.json())
+        .then(data => {
+          const b = data.find(b => b.id === buildingId);
+          if (!b) return;
 
-  if (buildingId) {
-    fetch("buildings.json")
-      .then(res => res.json())
-      .then(data => {
-        const b = data.find(b => b.id === buildingId);
-        if (!b) return;
+          document.getElementById("bldg-name").textContent = b.name;
+          document.getElementById("bldg-id").textContent = b.id;
+          document.getElementById("bldg-year").textContent = b.year;
+          document.getElementById("bldg-desc").textContent = b.description;
+          document.getElementById("bldg-history").textContent = b.history;
 
-        document.getElementById("bldg-name").textContent = b.name;
-        document.getElementById("bldg-id").textContent = b.id;
-        document.getElementById("bldg-year").textContent = b.year;
-        document.getElementById("bldg-desc").textContent = b.description;
-        document.getElementById("bldg-history").textContent = b.history;
+          document.getElementById("map").src = `https://maps.google.com/maps?q=${b.lat},${b.lng}&z=17&output=embed`;
 
-        const map = document.getElementById("map");
-        map.src = `https://maps.google.com/maps?q=${b.lat},${b.lng}&z=17&output=embed`;
-
-        // ✅ Set building image after b is defined
-        const image = document.getElementById("bldg-image");
-        image.src = `images/${b.id}.jpg`;
-        image.style.display = "block";
-        image.onerror = () => {
-          image.style.display = "none"; // Hide if not found
-        };
-      });
-  } else {
-    document.getElementById("bldg-name").textContent = "No building ID provided.";
-  }
-</script>
+          const image = document.getElementById("bldg-image");
+          image.src = `images/${b.id}.jpg`;
+          image.style.display = "block";
+          image.onerror = () => {
+            image.style.display = "none";
+          };
+        });
+    } else {
+      document.getElementById("bldg-name").textContent = "No building ID provided.";
+    }
+  </script>
 </body>
 </html>
