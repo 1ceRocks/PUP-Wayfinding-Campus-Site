@@ -2,55 +2,55 @@
   {
     "id": "MAB",
     "name": "Main Academic Building",
-    "lat": 14.6001,
-    "lng": 120.9851,
+    "lat": 14.59752,
+    "lng": 121.00972,
     "year": "1970s",
     "description": "The central hub of PUP’s academic and administrative functions.",
-    "history": "Originally a housing tenement, it was repurposed to accommodate PUP's academic needs as the university evolved from a vocational school to a state university. It now houses classrooms and offices."
+    "history": "Originally a housing tenement, it was repurposed to accommodate PUP's academic needs..."
   },
   {
     "id": "NALLRC",
     "name": "Ninoy Aquino Library and Learning Resources Center",
-    "lat": 14.5997,
-    "lng": 120.9844,
+    "lat": 14.59778,
+    "lng": 121.00972,
     "year": "1991",
     "description": "PUP’s main library and learning center.",
-    "history": "Named after Benigno 'Ninoy' Aquino Jr., the library was inaugurated on September 4, 1991. It supports the academic community with extensive resources and services."
-  },
-  {
-    "id": "CDR",
-    "name": "Charlie del Rosario Building",
-    "lat": 14.5992,
-    "lng": 120.9839,
-    "year": "1980s",
-    "description": "Student and cultural activity hub.",
-    "history": "Named after desaparecido activist Carlos 'Charlie' del Rosario. It honors his memory and houses student groups, publications, and cultural spaces."
-  },
-  {
-    "id": "LAGOON",
-    "name": "PUP Lagoon",
-    "lat": 14.6000,
-    "lng": 120.9840,
-    "year": "2021",
-    "description": "Green space and renovated relaxation area.",
-    "history": "Reopened in December 2021 as part of campus improvements. Its history connects to PUP’s origin as the Manila Business School in 1904."
+    "history": "Named after Benigno 'Ninoy' Aquino Jr., the library was inaugurated on September 4, 1991..."
   },
   {
     "id": "CEA",
     "name": "College of Engineering and Architecture",
-    "lat": 14.5996,
-    "lng": 120.9849,
+    "lat": 14.59889,
+    "lng": 121.00530,
     "year": "1978",
     "description": "Home of Engineering and Architecture programs.",
-    "history": "Once the Institute of Technology, it traces back to PUP’s evolution from PSC to PCC to full university status under Presidential Decree 1341."
+    "history": "Once the Institute of Technology..."
+  },
+  {
+    "id": "CDR",
+    "name": "Charlie del Rosario Building",
+    "lat": 14.59790,
+    "lng": 121.00900,
+    "year": "1980s",
+    "description": "Student and cultural activity hub.",
+    "history": "Named after desaparecido activist Carlos 'Charlie' del Rosario..."
+  },
+  {
+    "id": "LAGOON",
+    "name": "PUP Lagoon",
+    "lat": 14.59760,
+    "lng": 121.00950,
+    "year": "2021",
+    "description": "Green space and renovated relaxation area.",
+    "history": "Reopened in December 2021 as part of campus improvements..."
   },
   {
     "id": "HASMIN",
     "name": "Hasmin Building",
-    "lat": 14.5989,
-    "lng": 120.9843,
+    "lat": 14.59730,
+    "lng": 121.01000,
     "year": "1987",
     "description": "College of Tourism, Hospitality and Transportation Management.",
-    "history": "Located along Ramon Magsaysay Blvd, acquired by PUP in 1987. The Graduate School was later relocated nearby."
+    "history": "Acquired by PUP in 1987..."
   }
 ]
