@@ -6,7 +6,7 @@
     "lng": 121.01168085407141,
     "year": "1970s",
     "description": "The central hub of PUP’s academic and administrative functions.",
-    "history": "Originally a housing tenement, it was repurposed to accommodate PUP's academic needs..."
+    "history": "The Polytechnic University of the Philippines (PUP) Main Academic Building, located in Sta. Mesa, Manila, has a history intertwined with the institution's evolution from a vocational school to a state university. Originally, the building was intended to be a housing tenement but was repurposed to house the university's growing academic needs. It now serves as a central hub for various academic activities and administrative offices."
   },
   {
     "id": "NALLRC",
@@ -15,7 +15,7 @@
     "lng": 121.00965826337793,
     "year": "1991",
     "description": "PUP’s main library and learning center.",
-    "history": "Named after Benigno 'Ninoy' Aquino Jr., the library was inaugurated on September 4, 1991..."
+    "history": "The Ninoy Aquino Library and Learning Resources Center (NALLRC) at the Polytechnic University of the Philippines (PUP) is a significant building with a rich history, evolving from the university's early library facilities. It was inaugurated on September 4, 1991, and named after the late Senator Benigno \"Ninoy\" S. Aquino Jr. The library is a key service center for the university, providing access to information and resources for the PUP community."
   },
   {
     "id": "CEA",
@@ -24,7 +24,7 @@
     "lng": 121.0054467694134,
     "year": "1978",
     "description": "Home of Engineering and Architecture programs.",
-    "history": "Once the Institute of Technology..."
+    "history": "The Polytechnic University of the Philippines (PUP) College of Engineering and Architecture (CEA), formerly the Institute of Technology, has a rich history rooted in the evolution of PUP itself. It began as part of the Philippine School of Commerce (PSC), which was established in 1904 as the Manila Business School. Over time, PSC became the Philippine College of Commerce (PCC) and eventually, through Presidential Decree 1341 in 1978, was granted university status and renamed PUP. The Institute of Technology was created during this period of transformation, later becoming the College of Engineering and Architecture."
   },
   {
     "id": "CDR",
@@ -33,7 +33,7 @@
     "lng": 121.0096916233872,
     "year": "1980s",
     "description": "Student and cultural activity hub.",
-    "history": "Named after desaparecido activist Carlos 'Charlie' del Rosario..."
+    "history": "The PUP Charlie del Rosario Building is a structure at the Polytechnic University of the Philippines (PUP) named in honor of Carlos \"Charlie\" del Rosario, a desaparecido and activist who was a former instructor at the Philippine College of Commerce (now PUP). He was a vocal critic of the Marcos regime and was last seen putting up posters for a student rally in 1971. The building serves as a hub for student organizations, cultural groups, and publications."
   },
   {
     "id": "LAGOON",
@@ -42,7 +42,7 @@
     "lng": 121.01038689374636,
     "year": "2021",
     "description": "Green space and renovated relaxation area.",
-    "history": "Reopened in December 2021 as part of campus improvements..."
+    "history": "The PUP Lagoon, located at the Polytechnic University of the Philippines (PUP) in Sta. Mesa, Manila, is a renovated water feature and concessionaire area that was recently inaugurated on December 16, 2021. The lagoon's renovation is part of the university's ongoing efforts to improve infrastructure and provide a conducive learning environment for students. The PUP Lagoon's history is intertwined with the university's own history, which began as the Manila Business School in 1904. The school was established to train individuals for government service and private employment."
   },
   {
     "id": "HASMIN",
@@ -51,6 +51,6 @@
     "lng": 121.00192325407139,
     "year": "1987",
     "description": "College of Tourism, Hospitality and Transportation Management.",
-    "history": "Acquired by PUP in 1987..."
+    "history": "The Hasmin Building at PUP (Polytechnic University of the Philippines) is part of the M.H. Del Pilar Campus in Sta. Mesa, Manila. It houses the College of Tourism, Hospitality and Transportation Management. The building is located on Ramon Magsaysay Boulevard. It was acquired by PUP in 1987. In 1989-1990, the Graduate School was transferred to a refurbished building beside the Hasmin Hostel."
   }
 ]
