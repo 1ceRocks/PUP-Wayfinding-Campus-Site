@@ -42,6 +42,8 @@
 
   <iframe id="map" allowfullscreen></iframe>
 
+  <img id="bldg-image" alt="Building Image" style="margin-top: 1rem; width: 100%; max-height: 400px; object-fit: cover; border-radius: 10px;" />
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const buildingId = params.get("id");
@@ -65,6 +67,13 @@
     } else {
       document.getElementById("bldg-name").textContent = "No building ID provided.";
     }
+
+    // Load image based on building ID
+    const image = document.getElementById("bldg-image");
+    image.src = `images/${b.id}.jpg`; // or .png depending on your image extension
+    image.onerror = () => {
+      image.style.display = "none"; // Hide if image not found
+    };
   </script>
 </body>
 </html>
