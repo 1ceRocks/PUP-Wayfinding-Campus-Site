@@ -20,7 +20,7 @@
       text-align: center;
       box-shadow: 0 0 10px rgba(0,0,0,.1);
     }
-    .qr-item canvas { margin-bottom: 0.5rem; }
+    .qr-item img { margin-bottom: 0.5rem; }
     .qr-item p { font-size: 0.9rem; font-weight: 500; }
   </style>
 </head>
@@ -28,47 +28,36 @@
   <h1>PUP Campus QR Codes</h1>
   <div class="qr-grid" id="qr-grid"></div>
 
-  <!-- ✅ Load QRCode.js ONCE -->
-  <script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      if (typeof QRCode === "undefined") {
-        console.error("QRCode.js failed to load. Check CDN link.");
-        return;
-      }
+    const buildings = [
+      { id: "MAB", name: "Main Academic Building" },
+      { id: "NALLRC", name: "Ninoy Aquino Library and Learning Resources Center" },
+      { id: "CDR", name: "Charlie del Rosario Building" },
+      { id: "LAGOON", name: "PUP Lagoon" },
+      { id: "CEA", name: "College of Engineering and Architecture" },
+      { id: "HASMIN", name: "Hasmin Building" }
+    ];
 
-      const buildings = [
-        { id: "MAB", name: "Main Academic Building" },
-        { id: "NALLRC", name: "Ninoy Aquino Library and Learning Resources Center" },
-        { id: "CDR", name: "Charlie del Rosario Building" },
-        { id: "LAGOON", name: "PUP Lagoon" },
-        { id: "CEA", name: "College of Engineering and Architecture" },
-        { id: "HASMIN", name: "Hasmin Building" }
-      ];
+    const BASE_URL = "https://pup-wayfinding-campus-site.vercel.app/?id=";
+    const qrGrid = document.getElementById("qr-grid");
 
-      const BASE_URL = "https://pup-wayfinding-campus-site.vercel.app/?id=";
-      const qrGrid = document.getElementById("qr-grid");
+    buildings.forEach(b => {
+      const qrDiv = document.createElement("div");
+      qrDiv.className = "qr-item";
 
-      buildings.forEach(b => {
-        const qrDiv = document.createElement("div");
-        qrDiv.className = "qr-item";
+      const img = document.createElement("img");
+      img.width = 200;
+      img.height = 200;
 
-        const canvas = document.createElement("canvas");
+      // Use Google's Chart API
+      img.src = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${encodeURIComponent(BASE_URL + b.id)}`;
 
-        QRCode.toCanvas(canvas, `${BASE_URL}${b.id}`, { width: 200 }, (err) => {
-          if (err) {
-            console.error(`Error generating QR for ${b.name}:`, err);
-            return;
-          }
-        });
+      const label = document.createElement("p");
+      label.textContent = `${b.name} (${b.id})`;
 
-        const label = document.createElement("p");
-        label.textContent = `${b.name} (${b.id})`;
-
-        qrDiv.appendChild(canvas);
-        qrDiv.appendChild(label);
-        qrGrid.appendChild(qrDiv);
-      });
+      qrDiv.appendChild(img);
+      qrDiv.appendChild(label);
+      qrGrid.appendChild(qrDiv);
     });
   </script>
 </body>
