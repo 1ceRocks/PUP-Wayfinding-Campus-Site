@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QR Codes – Campus Wayfinding</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f8f8f8;
+    }
+    h1 {
+      text-align: center;
+      color: crimson;
+    }
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .qr-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .qr-item canvas {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>PUP Campus QR Codes</h1>
+  <div class="qr-grid" id="qr-grid"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script>
+    const buildings = [
+      { id: "CAFA", name: "College of Architecture and Fine Arts" },
+      { id: "LIB", name: "Main Library" },
+      { id: "REG", name: "Registrar’s Office" }
+    ];
+
+    const BASE_URL = "pup-wayfinding-campus-site.vercel.app";
+
+    const qrGrid = document.getElementById("qr-grid");
+
+    buildings.forEach(b => {
+      const qrDiv = document.createElement("div");
+      qrDiv.className = "qr-item";
+
+      const canvas = document.createElement("canvas");
+      QRCode.toCanvas(canvas, `${BASE_URL}${b.id}`, { width: 200 }, err => {
+        if (err) console.error(err);
+      });
+
+      const label = document.createElement("p");
+      label.textContent = `${b.name} (${b.id})`;
+
+      qrDiv.appendChild(canvas);
+      qrDiv.appendChild(label);
+      qrGrid.appendChild(qrDiv);
+    });
+  </script>
+</body>
+</html>
