@@ -1,0 +1,29 @@
+[
+  {
+    "id": "CAFA",
+    "name": "College of Architecture and Fine Arts",
+    "lat": 14.5999,
+    "lng": 120.9848,
+    "year": "1975",
+    "description": "Home of the Architecture and Fine Arts departments.",
+    "history": "Established to support arts-based curriculum post-war."
+  },
+  {
+    "id": "LIB",
+    "name": "Main Library",
+    "lat": 14.5997,
+    "lng": 120.9844,
+    "year": "1980",
+    "description": "Central library accessible to all colleges.",
+    "history": "Houses thousands of archival texts, digitalized in 2010."
+  },
+  {
+    "id": "REG",
+    "name": "Registrar’s Office",
+    "lat": 14.5993,
+    "lng": 120.9846,
+    "year": "1978",
+    "description": "Manages student records and enrollment.",
+    "history": "A key part of admin services since 1978."
+  }
+]
