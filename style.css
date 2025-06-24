@@ -19,16 +19,15 @@ flex-direction: column;
 gap: 1rem;
 padding: 1rem;
 }
-#info {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  white-space: normal;
+.info {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  max-width: 800px;
-  margin: 0 auto;
 }
 .info span {
   display: inline-block;
