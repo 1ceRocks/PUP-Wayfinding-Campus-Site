@@ -2,18 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>PUP Campus QR Codes</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background: #f8f8f8;
-    }
-    h1 {
-      text-align: center;
-      color: crimson;
-    }
+    body { font-family: Arial, sans-serif; padding: 2rem; background: #f8f8f8; }
+    h1 { text-align: center; color: crimson; }
     .qr-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -25,25 +18,18 @@
       padding: 1rem;
       border-radius: 12px;
       text-align: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,.1);
     }
-    .qr-item canvas {
-      margin-bottom: 0.5rem;
-    }
-    .qr-item p {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
+    .qr-item canvas { margin-bottom: 0.5rem; }
+    .qr-item p { font-size: 0.9rem; font-weight: 500; }
   </style>
 </head>
 <body>
   <h1>PUP Campus QR Codes</h1>
   <div class="qr-grid" id="qr-grid"></div>
 
-  <!-- ✅ Load the QRCode library FIRST, use 'defer' so it loads BEFORE the page finishes -->
-  <script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
-
-  <!-- ✅ Main Script AFTER the page has rendered -->
+  <!-- ✅ Load QRCode.js ONCE -->
+  <script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       if (typeof QRCode === "undefined") {
